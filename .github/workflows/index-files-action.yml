@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create a Markdown file with a list of all filenames in the input folder
+        run: |
+          input_folder="test_input_folder"
+          output_file="file_list.md"
+          echo "# List of files in $input_folder" > $output_file
+          for file in $(ls $input_folder); do
+            echo "- $file" >> $output_file
+          done
