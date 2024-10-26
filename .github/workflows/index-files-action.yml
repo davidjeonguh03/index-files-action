@@ -6,6 +6,9 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 env:
   INPUT_FOLDER: "test_input_folder"
   OUTPUT_FILE: "file_list.md"
