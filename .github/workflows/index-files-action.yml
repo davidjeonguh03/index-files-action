@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 env:
-  INPUT_FOLDER: "test_input_folder"
+  INPUT_FOLDERS: "test_input_folder/dvpohdkv,test_input_folder/jtpcfazn,test_input_folder/lurnydqg"
   OUTPUT_FILE: "file_list.md"
 
 jobs:
@@ -23,9 +23,12 @@ jobs:
 
       - name: Create a Markdown file with a list of all filenames in the input folder
         run: |
+          IFS=',' read -r -a folders <<< "$INPUT_FOLDERS"
           echo "# List of files in $INPUT_FOLDER" > $OUTPUT_FILE
-          for file in $(ls $INPUT_FOLDER); do
-            echo "- $file" >> $OUTPUT_FILE
+          for folder in "${folders[@]}"; do
+            echo "## $folder" >> $OUTPUT_FILE
+            for file in $(ls $folder); do
+              echo "- $file" >> $OUTPUT_FILE
           done
       - name: Commit and push changes
         run: |
