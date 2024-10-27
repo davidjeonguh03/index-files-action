@@ -32,4 +32,3 @@
 - [uwphqrad.txt](test_input_folder/lurnydqg/uwphqrad.txt)
 - [wfnaoqdh.txt](test_input_folder/lurnydqg/wfnaoqdh.txt)
 - [wizofncm.txt](test_input_folder/lurnydqg/wizofncm.txt)
-
