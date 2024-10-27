@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [ "main, dev" ]
+    branches: [ "main", "dev" ]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +26,7 @@ jobs:
           for folder in "${folders[@]}"; do
             echo "## $folder" >> $OUTPUT_FILE
             for file in $(ls $folder); do
-              echo "- $file" >> $OUTPUT_FILE
+              echo "- [${file}](${folder}/${file})" >> $OUTPUT_FILE
             done
           done
       - name: Commit and push changes
